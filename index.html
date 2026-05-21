@@ -8,8 +8,8 @@
 <style>
 body{
 margin:0;
-background:#000;
 font-family:Arial;
+background:#000;
 overflow:hidden;
 }
 
@@ -20,15 +20,12 @@ display:flex;
 justify-content:center;
 align-items:center;
 background:linear-gradient(135deg,#ff4d6d,#ffb3c1);
-position:absolute;
-width:100%;
-transition:opacity 0.8s ease;
 }
 
 button{
-padding:15px 30px;
+padding:15px 25px;
 border:none;
-border-radius:30px;
+border-radius:25px;
 font-size:18px;
 background:white;
 color:#ff4d6d;
@@ -41,172 +38,77 @@ cursor:pointer;
 display:none;
 height:100vh;
 width:100%;
-position:absolute;
-opacity:0;
-transition:opacity 1.5s ease;
-}
-
-/* wrapper */
-.wrapper{
-display:flex;
-height:100%;
-justify-content:center;
-align-items:center;
-gap:20px;
-}
-
-/* film strip */
-.strip{
-width:90px;
-height:100%;
-background:black;
-display:flex;
-flex-direction:column;
-justify-content:space-around;
-align-items:center;
-padding:10px 0;
-}
-
-.hole{
-width:50px;
-height:25px;
-background:#111;
-border-radius:4px;
-}
-
-/* center */
-.center{
-flex:1;
-height:100%;
-display:flex;
-justify-content:center;
-align-items:center;
 position:relative;
-overflow:hidden;
 }
 
-/* image */
+/* الصورة الخلفية */
 .photo{
+position:absolute;
 width:100%;
 height:100%;
 object-fit:cover;
-position:absolute;
-animation:move 8s ease-in-out infinite alternate;
 }
 
-@keyframes move{
-0%{transform:translateY(0) scale(1.05);}
-100%{transform:translateY(-10%) scale(1.1);}
-}
-
-/* overlay */
+/* طبقة غامقة */
 .overlay{
 position:absolute;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.35);
+background:rgba(0,0,0,0.45);
 }
 
-/* text */
+/* النص */
 .text{
-position:relative;
-color:white;
+position:absolute;
+bottom:60px;
+width:100%;
 text-align:center;
-z-index:2;
-width:85%;
-padding:20px;
-opacity:0;
-animation:fadeText 1.5s 0.5s forwards;
-}
-
-@keyframes fadeText{
-to{opacity:1;}
+color:white;
+padding:0 15px;
+box-sizing:border-box;
 }
 
 .text h1{
-font-size:28px;
+font-size:22px;
 margin-bottom:10px;
 }
 
 .text p{
-font-size:16px;
-line-height:1.8;
+font-size:15px;
+line-height:1.6;
 }
 
-/* 🔥 MOBILE FIX */
-@media (max-width: 768px){
-
-.wrapper{
-flex-direction:column;
-gap:10px;
-}
-
-.strip{
-width:100%;
-height:60px;
-flex-direction:row;
-}
-
-.center{
-width:100%;
-height:calc(100vh - 120px);
-}
-
-.text{
-width:95%;
-padding:10px;
-}
-
-.text h1{
-font-size:20px;
-}
-
-.text p{
-font-size:14px;
-}
+/* زرار صغير لو عايز */
+@media (min-width:768px){
+.text h1{font-size:32px;}
+.text p{font-size:18px;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 audio -->
+<!-- 🎵 موسيقى -->
 <audio id="music" src="song.mp3" loop></audio>
 
-<!-- page 1 -->
+<!-- الصفحة الأولى -->
 <div id="page1">
 <button onclick="start()">Open your surprise 🎬</button>
 </div>
 
-<!-- page 2 -->
+<!-- الصفحة الثانية -->
 <div id="page2">
 
-<div class="wrapper">
-
-<div class="strip">
-<div class="hole"></div><div class="hole"></div><div class="hole"></div>
-<div class="hole"></div><div class="hole"></div><div class="hole"></div>
-</div>
-
-<div class="center">
-
 <img class="photo" src="photo.jpg" alt="photo">
-
 <div class="overlay"></div>
 
 <div class="text">
 <h1>🎉 Happy Birthday Mark 🎂</h1>
 <p>
-عارف إن اليوم ده كان عيد ميلادك من شوية بس انا حبيت ارجعله عشان انت تستاهل كل حاجه حلوه يعم حتى لو متأخر شوية انت مهم عندي اوي ومش فارق معايا الظروف ولا الوقت قد ما يفرق معايا انك تبقى كويس ومبسوط ولو حتى لحظة حبيت اعملك حاجة بسيطة النهارده عشان تفضل فاكر ان في حد دايما جمبك بيحب الدنيا بتفضل تخبط في الواحد ليون مره بس الجدع الي ميستسلمش لن شاء الله السنه دي تبقي حلوه وتجيب تقدير حلو ويفرحك ويبسط وتبقي احلي دكتور يعم كل سنة وانت طيب يا اشطر دكتور وعقبال مليون سنه يا حبيب قلبي❤️❤️</p>
-</div>
-
-</div>
-
-<div class="strip">
-<div class="hole"></div><div class="hole"></div><div class="hole"></div>
-<div class="hole"></div><div class="hole"></div><div class="hole"></div>
-</div>
-
+اليوم ده كان عيد ميلادك من شوية بس انا حبيت ارجعله عشان انت تستاهل كل حاجه حلوه يعم حتى لو متأخر شوية انت مهم عندي اوي ومش فارق معايا الظروف ولا الوقت قد ما يفرق معايا انك تبقى كويس ومبسوط ولو حتى لحظة حبيت اعملك حاجة بسيطة النهارده عشان تفضل فاكر ان في حد دايما جمبك بيحب الدنيا بتفضل تخبط في الواحد مليون مره بس الجدع الي ميستسلمش ان شاء الله السنه دي تبقي حلوه وتجيب تقدير حلو ويفرحك ويبسط وتبقي احلي دكتور يع<br>
+كل سنة وانت طيب يا اشطر دكتور وعقبال مليون سنه يا حبيب قلبي❤️❤️<br>
+ 🎉
+</p>
 </div>
 
 </div>
@@ -214,32 +116,24 @@ font-size:14px;
 <script>
 function start(){
 
-// hide page1
-document.getElementById("page1").style.opacity = "0";
+document.getElementById("page1").style.display="none";
+document.getElementById("page2").style.display="block";
 
-setTimeout(() => {
-document.getElementById("page1").style.display = "none";
-document.getElementById("page2").style.display = "block";
-
-setTimeout(() => {
-document.getElementById("page2").style.opacity = "1";
-}, 100);
-}, 800);
-
-// music
+// تشغيل الموسيقى
 let music = document.getElementById("music");
 music.volume = 0;
 music.play().catch(()=>{});
 
-let vol = 0;
-let fade = setInterval(() => {
-if(vol < 1){
-vol += 0.05;
-music.volume = vol;
-} else {
+// fade صوت
+let v = 0;
+let fade = setInterval(()=>{
+if(v < 1){
+v += 0.05;
+music.volume = v;
+}else{
 clearInterval(fade);
 }
-}, 120);
+},120);
 
 }
 </script>
