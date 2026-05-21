@@ -8,8 +8,8 @@
 <style>
 body{
 margin:0;
-font-family:Arial;
 background:#000;
+font-family:Arial;
 overflow:hidden;
 }
 
@@ -20,12 +20,14 @@ display:flex;
 justify-content:center;
 align-items:center;
 background:linear-gradient(135deg,#ff4d6d,#ffb3c1);
+position:absolute;
+width:100%;
 }
 
 button{
-padding:15px 25px;
+padding:15px 30px;
 border:none;
-border-radius:25px;
+border-radius:30px;
 font-size:18px;
 background:white;
 color:#ff4d6d;
@@ -38,15 +40,56 @@ cursor:pointer;
 display:none;
 height:100vh;
 width:100%;
-position:relative;
+position:absolute;
 }
 
-/* الصورة الخلفية */
+/* container */
+.wrapper{
+display:flex;
+height:100%;
+width:100%;
+justify-content:center;
+align-items:stretch;
+gap:10px;
+}
+
+/* شريط الفيلم */
+.strip{
+width:70px;
+min-width:70px;
+height:100%;
+background:black;
+display:flex;
+flex-direction:column;
+justify-content:space-around;
+align-items:center;
+padding:10px 0;
+box-sizing:border-box;
+}
+
+.hole{
+width:40px;
+height:20px;
+background:#111;
+border-radius:4px;
+}
+
+/* المنتصف */
+.center{
+flex:1;
+height:100%;
+position:relative;
+overflow:hidden;
+}
+
+/* الصورة */
 .photo{
-position:absolute;
 width:100%;
 height:100%;
 object-fit:cover;
+position:absolute;
+top:0;
+left:0;
 }
 
 /* طبقة غامقة */
@@ -54,61 +97,97 @@ object-fit:cover;
 position:absolute;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.45);
+background:rgba(0,0,0,0.35);
 }
 
 /* النص */
 .text{
 position:absolute;
-bottom:60px;
-width:100%;
-text-align:center;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+width:90%;
 color:white;
-padding:0 15px;
-box-sizing:border-box;
+text-align:center;
+z-index:2;
 }
 
 .text h1{
-font-size:22px;
-margin-bottom:10px;
+font-size:20px;
+margin:0 0 10px;
 }
 
 .text p{
-font-size:15px;
+font-size:14px;
 line-height:1.6;
+margin:0;
 }
 
-/* زرار صغير لو عايز */
-@media (min-width:768px){
-.text h1{font-size:32px;}
-.text p{font-size:18px;}
+/* 🔥 تظبيط الموبايل */
+@media (max-width:768px){
+
+.strip{
+width:55px;
+min-width:55px;
+}
+
+.hole{
+width:30px;
+height:15px;
+}
+
+.text h1{
+font-size:18px;
+}
+
+.text p{
+font-size:13px;
+}
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 موسيقى -->
 <audio id="music" src="song.mp3" loop></audio>
 
-<!-- الصفحة الأولى -->
+<!-- page 1 -->
 <div id="page1">
 <button onclick="start()">Open your surprise 🎬</button>
 </div>
 
-<!-- الصفحة الثانية -->
+<!-- page 2 -->
 <div id="page2">
 
+<div class="wrapper">
+
+<div class="strip">
+<div class="hole"></div><div class="hole"></div><div class="hole"></div>
+<div class="hole"></div><div class="hole"></div><div class="hole"></div>
+</div>
+
+<div class="center">
+
 <img class="photo" src="photo.jpg" alt="photo">
+
 <div class="overlay"></div>
 
 <div class="text">
 <h1>🎉 Happy Birthday Mark 🎂</h1>
 <p>
-اليوم ده كان عيد ميلادك من شوية بس انا حبيت ارجعله عشان انت تستاهل كل حاجه حلوه يعم حتى لو متأخر شوية انت مهم عندي اوي ومش فارق معايا الظروف ولا الوقت قد ما يفرق معايا انك تبقى كويس ومبسوط ولو حتى لحظة حبيت اعملك حاجة بسيطة النهارده عشان تفضل فاكر ان في حد دايما جمبك بيحب الدنيا بتفضل تخبط في الواحد مليون مره بس الجدع الي ميستسلمش ان شاء الله السنه دي تبقي حلوه وتجيب تقدير حلو ويفرحك ويبسط وتبقي احلي دكتور يع<br>
-كل سنة وانت طيب يا اشطر دكتور وعقبال مليون سنه يا حبيب قلبي❤️❤️<br>
- 🎉
+كل سنة وانت طيب يا مارك ❤️  
+السنة دي كلها فرحة ونجاح وضحك  
+وأتمنى دايمًا تفضل أقرب صاحب ليا 🎉
 </p>
+</div>
+
+</div>
+
+<div class="strip">
+<div class="hole"></div><div class="hole"></div><div class="hole"></div>
+<div class="hole"></div><div class="hole"></div><div class="hole"></div>
+</div>
+
 </div>
 
 </div>
@@ -119,12 +198,12 @@ function start(){
 document.getElementById("page1").style.display="none";
 document.getElementById("page2").style.display="block";
 
-// تشغيل الموسيقى
+// music
 let music = document.getElementById("music");
 music.volume = 0;
 music.play().catch(()=>{});
 
-// fade صوت
+// fade sound
 let v = 0;
 let fade = setInterval(()=>{
 if(v < 1){
